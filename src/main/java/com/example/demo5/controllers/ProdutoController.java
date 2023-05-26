@@ -51,17 +51,6 @@ public class ProdutoController {
         for (ProdutoRequisicao produtoRequisicao : produtosRequisicao) {
             List<Produto> byNome = produtoRepositoryJPA.findByNome(produtoRequisicao.getNome());
             produtos.addAll(otimizadorCompra.otimizarCompra(byNome,produtoRequisicao.getQuantidade()));
-//
-//            for (Produto produto : byNome) {
-//                    System.out.println("Número: " + produtoRequisicao.getQuantidade().toString());
-//                    String unidadeUsuario = partes[0];
-//                    double quantidadeUsuario = Double.parseDouble(partes[1]);
-//                    double quantidadeConvertida = conversaoService.converterUnidade(unidadeUsuario, produto.getUnidadeVenda(), quantidadeUsuario);
-                    // Aqui você pode fazer o que precisar com a quantidade convertida.
-                    // Por exemplo, você pode adicionar um novo campo ao Produto para armazenar a quantidade desejada.
-//                    produtos.add(produto);
-
-//            }
         }
         return produtos;
     }

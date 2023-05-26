@@ -11,6 +11,9 @@ public class Produto {
     private String nome;
     private String marca;
     private String descricao;
+
+    private String imagem;
+
     private Long unidadeVenda;
     private Double preco;
 
@@ -71,5 +74,13 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
