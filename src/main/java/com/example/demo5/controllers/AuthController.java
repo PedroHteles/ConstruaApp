@@ -20,9 +20,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public AuthenticationResponse login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        AuthenticationResponse token = authService.authenticate(email, password);
-        if (token != null) {
-            return token;
+        AuthenticationResponse response = authService.authenticate(email, password);
+        if (response != null) {
+            return response;
         } else {
             return null;
         }
