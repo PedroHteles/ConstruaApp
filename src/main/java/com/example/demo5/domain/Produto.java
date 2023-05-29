@@ -11,9 +11,7 @@ public class Produto {
     private String nome;
     private String marca;
     private String descricao;
-
     private String imagem;
-
     private Long unidadeVenda;
     private Double preco;
 
