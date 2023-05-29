@@ -1,6 +1,7 @@
 package com.example.demo5.service;
 
 import com.example.demo5.domain.Cliente;
+import com.example.demo5.dtos.AuthenticationResponse;
 import com.example.demo5.repositories.ClienteRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,10 +18,11 @@ public class AuthService {
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public String authenticate(String email, String password) {
+    public AuthenticationResponse  authenticate(String email, String password) {
         Cliente cliente = clienteRepository.findByEmail(email);
         if (cliente != null && passwordEncoder.matches(password, cliente.getSenha())) {
-            return jwtTokenProvider.createToken(email);
+            String token = jwtTokenProvider.createToken(email);
+            return new AuthenticationResponse(token, cliente);
         }
         return null;
     }

@@ -1,6 +1,7 @@
 package com.example.demo5.controllers;
 
 import com.example.demo5.domain.Cliente;
+import com.example.demo5.dtos.AuthenticationResponse;
 import com.example.demo5.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        String token = authService.authenticate(email, password);
+    public AuthenticationResponse login(@RequestParam("email") String email, @RequestParam("password") String password) {
+        AuthenticationResponse token = authService.authenticate(email, password);
         if (token != null) {
-            return "Bearer " + token;
+            return token;
         } else {
-            return "Authentication failed";
+            return null;
         }
     }
 }

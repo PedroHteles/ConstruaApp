@@ -1,5 +1,7 @@
 package com.example.demo5.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +21,7 @@ public class Cliente {
 
     //sets e gets
 
-
+    @JsonIgnore
     public String getToken() {
         return token;
     }
@@ -36,6 +38,7 @@ public class Cliente {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getSenha() {
         return senha;
     }
