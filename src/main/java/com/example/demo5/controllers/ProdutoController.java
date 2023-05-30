@@ -64,7 +64,7 @@ public class ProdutoController {
     public void update(@PathVariable(name = "id") Long id,
                        @RequestBody Produto produto) {
         produto.setId(id);
-        produto = produtoRepositoryJPA.save(produto);
+        produtoRepositoryJPA.save(produto);
     }
 
     @DeleteMapping(value = "/{id}")

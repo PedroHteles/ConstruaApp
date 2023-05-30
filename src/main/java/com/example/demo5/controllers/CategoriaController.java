@@ -14,8 +14,6 @@ public class CategoriaController {
     @Autowired
     private CategoriaRepositoryJPA categoriaRepositoryJPA;
 
-
-
     @GetMapping
     public List<Categoria> findAll() {
          return categoriaRepositoryJPA.findAll();
@@ -36,7 +34,7 @@ public class CategoriaController {
     public void update(@PathVariable(name = "id") Long id,
                        @RequestBody Categoria categoria) {
         categoria.setId(id);
-        categoria = categoriaRepositoryJPA.save(categoria);
+         categoriaRepositoryJPA.save(categoria);
     }
 
     @DeleteMapping(value = "/{id}")

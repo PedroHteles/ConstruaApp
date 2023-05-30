@@ -36,7 +36,7 @@ public class ClienteController {
     public void update(@PathVariable(name = "id") Long id,
                        @RequestBody Cliente cliente) {
         cliente.setId(id);
-        cliente = clienteRepository.save(cliente);
+        clienteRepository.save(cliente);
     }
 
     @DeleteMapping(value = "/{id}")

@@ -36,7 +36,7 @@ public class SugestaoController {
     public void update(@PathVariable(name = "id") Long id,
                        @RequestBody Sugestao sugestao) {
         sugestao.setId(id);
-        sugestao = sugestaoRepositoryJPA.save(sugestao);
+        sugestaoRepositoryJPA.save(sugestao);
     }
 
     @DeleteMapping(value = "/{id}")
