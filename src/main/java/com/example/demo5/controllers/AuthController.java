@@ -25,7 +25,7 @@ public class AuthController {
     public ResponseEntity<AuthenticationResponse> login(@RequestParam("email") String email, @RequestParam("password") String password) {
         AuthenticationResponse response = authService.authenticate(email, password);
         if (response != null) {
-            return ResponseEntity.ok(response);
+            return ResponseUtil.createOkResponse(response);
         } else {
             return ResponseUtil.createUnauthorizedResponse("Unauthorized");
         }

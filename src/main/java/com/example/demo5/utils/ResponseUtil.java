@@ -15,6 +15,22 @@ public class ResponseUtil {
         return createResponse(HttpStatus.UNAUTHORIZED, null);
     }
 
+    public static <T> ResponseEntity<T> createOkResponse(T body) {
+        return createResponse(HttpStatus.OK, body);
+    }
+
+    public static <T> ResponseEntity<T> createCreatedResponse(T body) {
+        return createResponse(HttpStatus.CREATED, body);
+    }
+
+    public static ResponseEntity<?> createNotFoundResponse(String message) {
+        return createResponse(HttpStatus.NOT_FOUND, message);
+    }
+
+    public static ResponseEntity<?> createInternalServerErrorResponse(String message) {
+        return createResponse(HttpStatus.INTERNAL_SERVER_ERROR, message);
+    }
+
     // Outros métodos para lidar com diferentes códigos de status...
 
 }
