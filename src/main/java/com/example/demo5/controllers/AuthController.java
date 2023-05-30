@@ -3,7 +3,10 @@ package com.example.demo5.controllers;
 import com.example.demo5.domain.Cliente;
 import com.example.demo5.dtos.AuthenticationResponse;
 import com.example.demo5.service.AuthService;
+import com.example.demo5.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,12 +22,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthenticationResponse login(@RequestParam("email") String email, @RequestParam("password") String password) {
+    public ResponseEntity<AuthenticationResponse> login(@RequestParam("email") String email, @RequestParam("password") String password) {
         AuthenticationResponse response = authService.authenticate(email, password);
         if (response != null) {
-            return response;
+            return ResponseEntity.ok(response);
         } else {
-            return null;
+            return ResponseUtil.createUnauthorizedResponse("Unauthorized");
         }
     }
+
 }
