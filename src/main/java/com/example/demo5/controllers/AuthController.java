@@ -2,6 +2,7 @@ package com.example.demo5.controllers;
 
 import com.example.demo5.domain.Cliente;
 import com.example.demo5.dtos.AuthenticationResponse;
+import com.example.demo5.dtos.LoginDTO;
 import com.example.demo5.service.AuthService;
 import com.example.demo5.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,18 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public boolean register(@RequestBody Cliente newCliente) {
-        return authService.register(newCliente);
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody Cliente newCliente) {
+        boolean register = authService.register(newCliente);
+        if (register) {
+            return ResponseUtil.createOkResponse(authService.getCliente(newCliente.getEmail()));
+        } else {
+            return ResponseUtil.createUnauthorizedResponse("Unauthorized");
+        }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        AuthenticationResponse response = authService.authenticate(email, password);
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginDTO loginDTO) {
+        AuthenticationResponse response = authService.authenticate(loginDTO.getEmail(), loginDTO.getPassword());
         if (response != null) {
             return ResponseUtil.createOkResponse(response);
         } else {

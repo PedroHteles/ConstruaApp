@@ -13,7 +13,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/auth/login", "/auth/register").permitAll()
-                .anyRequest().authenticated();
+                // .antMatchers("/auth/login", "/auth/register","/categoria","/clientes","/pedido","/sugestao","/produto").permitAll()
+                //.antMatchers("/produto/categoria/**").permitAll()// Adiciona uma nova permissão para o padrão "/api/produto/categoria/**"
+                //f .anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 }

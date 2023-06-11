@@ -40,9 +40,9 @@ public class ProdutoController {
         return produto;
     }
 
-    @GetMapping("/categoria/{categoriaId}")
-    public List<Produto> findAllByCategory(@PathVariable Long categoriaId) {
-        return produtoRepositoryJPA.findByCategoria_Id(categoriaId);
+    @GetMapping("/categoria/{categoriaName}")
+    public List<Produto> findAllByCategory(@PathVariable String categoriaName) {
+        return produtoRepositoryJPA.findByCategoria_Nome(categoriaName);
     }
 
     @PostMapping("/orcamento")

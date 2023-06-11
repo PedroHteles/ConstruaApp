@@ -27,6 +27,15 @@ public class AuthService {
         return null;
     }
 
+    public AuthenticationResponse  getCliente(String email) {
+        Cliente cliente = clienteRepository.findByEmail(email);
+        if (cliente != null) {
+            String token = jwtTokenProvider.createToken(email);
+            return new AuthenticationResponse(token, cliente);
+        }
+        return null;
+    }
+
     public boolean register(Cliente newCliente) {
         Cliente cliente = clienteRepository.findByEmail(newCliente.getEmail());
         if (cliente != null) {

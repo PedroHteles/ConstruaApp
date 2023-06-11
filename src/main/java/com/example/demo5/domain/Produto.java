@@ -14,6 +14,7 @@ public class Produto {
     private String imagem;
     private Long unidadeVenda;
     private Double preco;
+    private String unidadeMedida;
 
     @ManyToOne
     private Categoria categoria;
@@ -44,6 +45,15 @@ public class Produto {
 
     public String getMarca() {
         return this.marca;
+    }
+
+
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
     public void setMarca(String marca) {

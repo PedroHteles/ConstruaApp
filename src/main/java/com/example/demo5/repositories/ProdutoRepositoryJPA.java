@@ -9,5 +9,7 @@ public interface ProdutoRepositoryJPA  extends JpaRepository<Produto, Long> {
 
     List<Produto> findByCategoria_Id(Long categoriaId);
 
+    List<Produto> findByCategoria_Nome(String nome);
+
     List<Produto> findByNome(String nome);
 }

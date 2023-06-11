@@ -21,13 +21,13 @@ public class Cliente {
 
     //sets e gets
 
-    @JsonIgnore
-    public String getToken() {
-        return token;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -38,7 +38,6 @@ public class Cliente {
         this.email = email;
     }
 
-    @JsonIgnore
     public String getSenha() {
         return senha;
     }
@@ -47,12 +46,12 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public Long getId() {
-        return id;
+    public String getToken() {
+        return token;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getCpf() {
@@ -86,5 +85,4 @@ public class Cliente {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
 }

@@ -26,7 +26,9 @@ public class CategoriaController {
 
     @PostMapping
     public Categoria create(@RequestBody Categoria categoria) {
-        categoria = categoriaRepositoryJPA.save(categoria);
+        if(categoria.getNome() != null){
+            categoria = categoriaRepositoryJPA.save(categoria);
+        }
         return categoria;
     }
 
