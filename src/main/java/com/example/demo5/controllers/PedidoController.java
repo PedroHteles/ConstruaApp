@@ -32,6 +32,11 @@ public class PedidoController {
         return pedido;
     }
 
+    @PostMapping("/pedidos")
+    public List<Pedido> criarPedidos(@RequestBody List<Pedido> pedidos) {
+        return pedidoRepositoryJPA.saveAll(pedidos);
+    }
+
     @PutMapping(value = "/{id}")
     public void update(@PathVariable(name = "id") Long id,
                        @RequestBody Pedido pedido) {

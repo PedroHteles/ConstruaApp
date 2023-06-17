@@ -3,25 +3,21 @@ package com.example.demo5.domain;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Entity
 public class Pedido {
-
-    public enum Status {
-        ABERTO, PROCESSADO, ERRO
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
-    @Column(name = "total_pedido")
-    private BigDecimal total = BigDecimal.ZERO;
-
-    @ManyToOne(optional = false)
-    private Cliente cliente;
+    private Long idProduto;
+    private int quantidade;
+    private Long idUsuario;
 
     public Long getId() {
         return id;
@@ -31,27 +27,27 @@ public class Pedido {
         this.id = id;
     }
 
-    public Status getStatus() {
-        return status;
+    public Long getIdProduto() {
+        return idProduto;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }
